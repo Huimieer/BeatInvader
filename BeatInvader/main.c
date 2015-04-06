@@ -14,19 +14,40 @@
 ****************************************************************************************/
 #include "main.h"
 #include "struct.h"
+#include "CommDevice.h"
 /**************************DriverUnload********************************/
 VOID
 DriverUnload(IN PDRIVER_OBJECT pDriverObj)
 {	
-
+	DeleteDevice(pDriverObj->DeviceObject);
+	CodeVprint("Driver Unload");
 	return;
+}
+/**************************RegisterDispatch********************************/
+VOID RegisterDispatch(PDRIVER_OBJECT pDriverObj)
+{
+	int i = 0;
+	//×¢²á¸÷ÖÖº¯Êý
+	pDriverObj->DriverUnload = DriverUnload;
+	for(i = 0; i < IRP_MJ_MAXIMUM_FUNCTION; i++)
+	{
+		pDriverObj->MajorFunction[i] = DispatchCommon;
+	}
+	pDriverObj->MajorFunction[IRP_MJ_DEVICE_CONTROL] = DispatchIoctrl;
 }
 /**************************DriverEntry********************************/
 NTSTATUS
 DriverEntry(IN PDRIVER_OBJECT pDriverObj, IN PUNICODE_STRING pRegistryString)
 {
-	NTSTATUS status = STATUS_SUCCESS;
-	pDriverObj->DriverUnload = DriverUnload;
+	NTSTATUS nStatus = STATUS_SUCCESS;
+	CodeVprint("Enter DriverEntry");
+	DbgBreakPoint();
+	nStatus = CreateCommDevice(pDriverObj);
+	if (!NT_SUCCESS(nStatus))
+	{
+		return nStatus;
+	}
+	RegisterDispatch(pDriverObj);
 	return STATUS_SUCCESS;
 }
 

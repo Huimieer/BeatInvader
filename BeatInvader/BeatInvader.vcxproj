@@ -7,7 +7,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>"{4EE67C57-BE79-4CD7-B3B0-94AECE62DB41}"</ProjectGuid>
+    <ProjectGuid>{4EE67C57-BE79-4CD7-B3B0-94AECE62DB41}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>"BeatInvader"</RootNamespace>
   </PropertyGroup>
@@ -53,10 +53,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include=".\BeatInvader.c" />
-    <ClCompile Include=".\BeatInvader.h" />
     <ClCompile Include=".\struct.h" />
-    <ClCompile Include=".\common.h" />
+    <ClCompile Include="CommDevice.c" />
+    <ClCompile Include="DbgPrintSystem.c" />
+    <ClCompile Include="main.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CommDevice.h" />
+    <ClInclude Include="DbgPrintSystem.h" />
+    <ClInclude Include="IoCtrlCode.h" />
+    <ClInclude Include="main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

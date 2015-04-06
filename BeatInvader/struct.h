@@ -16,7 +16,8 @@ Copyright (C) 2010 vLink.
 #pragma once
 
 #include <ntddk.h> 
-
+//调试打印的头文件也放在这，基本上所有文件都要包含
+#include "DbgPrintSystem.h"
 typedef long LONG;
 typedef unsigned char  BOOL, *PBOOL;
 typedef unsigned char  BYTE, *PBYTE;
@@ -24,13 +25,11 @@ typedef unsigned long  DWORD, *PDWORD;
 typedef unsigned short WORD, *PWORD;
 
 typedef void  *HMODULE;
-typedef long NTSTATUS, *PNTSTATUS;
 typedef unsigned long DWORD;
 typedef DWORD * PDWORD;
-typedef unsigned long ULONG;
-typedef unsigned long ULONG_PTR;
-typedef ULONG *PULONG;
 typedef unsigned short WORD;
+typedef unsigned long ULONG;
+typedef ULONG * PULONG;
 typedef unsigned char BYTE; 
 typedef unsigned char UCHAR;
 typedef unsigned short USHORT;

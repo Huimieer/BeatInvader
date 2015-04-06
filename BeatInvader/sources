@@ -1,9 +1,11 @@
-TARGETNAME=BeatInvader
+TARGETNAME=SpursWin
 #TARGETPATH=$(BASEDIR)\lib
-TARGETPATH=obj
+TARGETPATH=Debug
 TARGETTYPE=DRIVER
 
 INCLUDES=.\
 
-SOURCES=main.c
+SOURCES=main.c\
+CommDevice.c\
+DbgPrintSystem.c
 
